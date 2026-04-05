@@ -1,0 +1,259 @@
+        * {
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        :root {
+            --primary: #ff4b6e;
+            --secondary: #ff8fa3;
+            --bg: #fff5f7;
+            --card: rgba(255,255,255,0.7);
+            --text: #333;
+        }
+
+        /* DARK MODE */
+        .dark {
+            --bg: #121212;
+            --card: rgba(0,0,0,0.6);
+            --text: #fff;
+        }
+
+        /* 🌈 BACKGROUND */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(-45deg, #ff4b6e, #ff8fa3, #ffd6e0, #ffeef2);
+            background-size: 400% 400%;
+            animation: gradientMove 12s ease infinite;
+            color: var(--text);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% }
+            50% { background-position: 100% }
+            100% { background-position: 0% }
+        }
+
+        /* 🌊 BLOBS */
+        .blob {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #ff8fa3, transparent);
+            filter: blur(80px);
+            opacity: 0.5;
+            z-index: -1;
+            animation: blobMove 20s infinite alternate;
+        }
+
+        @keyframes blobMove {
+            from { transform: translate(-50px, -50px); }
+            to { transform: translate(50px, 50px); }
+        }
+
+        /* ✨ SPARKLES */
+        .sparkle {
+            position: fixed;
+            width: 5px;
+            height: 5px;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkleAnim 2s linear forwards;
+        }
+
+        @keyframes sparkleAnim {
+            0% {opacity:0; transform: scale(0);}
+            50% {opacity:1; transform: scale(1.2);}
+            100% {opacity:0; transform: scale(0);}
+        }
+
+        /* 💖 EMOJIS */
+        .heart {
+            position: fixed;
+            bottom: -50px;
+            pointer-events: none;
+            z-index: 100;
+            animation: floatUp linear forwards;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity:0.7;}
+            100% { transform: translateY(-120vh) rotate(360deg); opacity:0;}
+        }
+
+        /* 🎨 TOGGLE */
+        .theme-toggle {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: var(--primary);
+            color: white;
+            padding: 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* 📦 CARD */
+        .card {
+            background: var(--card);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 35px 25px;
+            border-radius: 24px;
+            width: 90%;
+            max-width: 400px;
+            margin: 100px auto;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Decorative heart elements */
+        .card::before {
+            content: '❤';
+            position: absolute;
+            top: -20px;
+            right: 20px;
+            font-size: 80px;
+            color: rgba(255, 75, 110, 0.37);
+            z-index: 0;
+        }
+        
+        h2 {
+            margin-top: 0;
+            color: var(--text);
+            font-size: 1.8rem;
+        }
+
+        p {
+            color: var(--text);
+            opacity: 0.8;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        /* Inputs */
+        input {
+            width: 100%;
+            padding: 14px 15px;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.1);
+            background: rgba(255,255,255,0.9);
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .dark input {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 75, 110, 0.2);
+        }
+
+        /* Buttons */
+        .btn-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .primary-btn {
+            background: var(--primary);
+            color: white;
+        }
+
+        .primary-btn:hover {
+            filter: brightness(1.1);
+            transform: translateY(-2px);
+        }
+
+        .cancel-btn {
+            background: rgba(0,0,0,0.05);
+            color: var(--text);
+        }
+
+        .dark .cancel-btn {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .cancel-btn:hover {
+            background: rgba(0,0,0,0.1);
+        }
+
+        .logout-btn {
+            background: #ffeef1;
+            color: #ff4b6e;
+            margin-top: 10px;
+        }
+
+        .dark .logout-btn {
+            background: rgba(255, 75, 110, 0.2);
+        }
+
+        .logout-btn:hover {
+            background: #ffd6dc;
+        }
+
+        /* Link specific */
+        .link-btn {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            width: 100%;
+        }
+
+        /* Error Message */
+        .error {
+            color: #ff4b6e;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            min-height: 1.2rem;
+            font-weight: 500;
+        }
+
+        /* View States */
+        .view {
+            display: none;
+        }
+
+        .view.active {
+            display: block;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Success Icon */
+        .success-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            display: block;
+        }
